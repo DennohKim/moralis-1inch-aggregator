@@ -8,9 +8,15 @@ import {
 
 function Swap() {
   const [slippage, setSlippage] = useState(2.5);
+  const [tokenOneAmount,setTokenOneAmount] = useState(null)
+  const [tokenTwoAmount,setTokenTwoAmount] = useState(null)
 
   function handleSlippageChange(e){
     setSlippage(e.target.value);
+  }
+
+  function changeAmount(e){
+    setTokenOneAmount(e.target.value);
   }
 
   const settings = (
@@ -37,6 +43,11 @@ function Swap() {
         >
           <SettingOutlined className="cog" />
         </Popover>
+      </div>
+      <div className="inputs">
+      <Input placeholder="0" value={tokenOneAmount} onChange={changeAmount}/>
+      <Input placeholder="0" value={tokenTwoAmount} disabled={true}/>
+
       </div>
     </div>
   );
